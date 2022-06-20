@@ -18,6 +18,13 @@ export class ProjectsComponent {
     }
   }
 
+  deleteProject(project: Project): void {
+    if (confirm("Are you sure to delete this project?")) {
+      let index = this.projects.indexOf(project);
+      this.projects.splice(index, 1);
+    }
+  }
+
   onSelect(project: Project): void {
     if (this.selectedProject === project) {
       this.selectedProject = null;

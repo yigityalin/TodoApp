@@ -27,6 +27,14 @@ export class Project {
   }
 
   public complete(): void {
-    this._end = new Date();
+    if (this.isCompleted()) {
+      throw Error("This project is already over");
+    } else if (confirm("Are you sure to complete this project?")) {
+      this._end = new Date();
+    }
+  }
+
+  public isCompleted(): boolean {
+    return this._end !== null;
   }
 }

@@ -10,13 +10,16 @@
       <div class="project-list-item-clickable">
         <div class="my-0 px-3" (click)="onSelect(project)">{{ project.name }}</div>
         <button type="button" class="btn btn-outline-success btn-sm"
+                [class.d-none]="project.isCompleted()"
                 [class.text-white]="project == selectedProject"
-                [class.border-white]="project == selectedProject">
+                [class.border-white]="project == selectedProject"
+                (click)="project.complete()">
           Complete
         </button>
         <button type="button" class="btn btn-outline-danger btn-sm"
                 [class.text-white]="project == selectedProject"
-                [class.border-white]="project == selectedProject">
+                [class.border-white]="project == selectedProject"
+                (click)="deleteProject(project)">
           Delete
         </button>
       </div>
