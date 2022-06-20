@@ -8,13 +8,14 @@
         [class.active]="project == selectedProject">
 
       <div class="project-list-item-clickable">
-        <div class="my-0 px-3" (click)="onSelect(project)">{{ project.name }}</div>
+        <div class="my-0 px-3" (click)="onSelect(project)"> {{ project.name }}</div>
         <button type="button" class="btn btn-outline-success btn-sm"
-                [class.d-none]="project.isCompleted()"
                 [class.text-white]="project == selectedProject"
                 [class.border-white]="project == selectedProject"
+                [class.active]="project.isCompleted"
+                [class.button-disabled]="project.isCompleted"
                 (click)="project.complete()">
-          Complete
+          {{ project.isCompleted ? "Completed" : "Complete" }}
         </button>
         <button type="button" class="btn btn-outline-danger btn-sm"
                 [class.text-white]="project == selectedProject"
@@ -28,10 +29,23 @@
            [class.d-none]="project != selectedProject">
         <p class="card-header text-center">Project Details</p>
         <div class="card-body">
-          <div class="details-header">
+          <div class="details-header mb-4">
             {{ project.name }}
             <small class="project-date">{{ project.start }} - {{ project.end }}</small>
           </div>
+          <p class="text-center" *ngIf="project.progress.length === 0; else progress">
+            You have no progress on this project.
+          </p>
+          <ng-template #progress>
+            <ul class="details-progress list-group list-group-flush">
+              <li class="project-list-item list-group-item"
+                  *ngFor="let progress of project.progress">
+                <div>
+                  progress
+                </div>
+              </li>
+            </ul>
+          </ng-template>
         </div>
       </div>
     </li>

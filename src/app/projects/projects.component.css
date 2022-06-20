@@ -21,6 +21,7 @@
 .project-list-item-clickable button {
   margin-left: 0.3rem;
   margin-right: 0.3rem;
+  width: 8.4rem;
 }
 
 .project-list-item-clickable:nth-child(n) {
