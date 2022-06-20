@@ -1,6 +1,29 @@
-<h2>{{ title }}</h2>
-<ul>
-  <li *ngFor="let project of projects">
-    {{ project.name }}
-  </li>
-</ul>
+<section class="card">
+  <div id="projects-list-header" class="card-header text-center">
+    {{ title }}
+  </div>
+  <ul id="projects" class="list-group list-group-flush">
+    <li class="project-list-item list-group-item"
+        *ngFor="let project of projects"
+        [class.active]="project == selectedProject">
+
+      <div class="project-list-item-clickable" (click)="onSelect(project)">
+        <span>{{ project.name }}</span>
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="project-detail card my-2 text-black"
+           [class.d-none]="project != selectedProject">
+        <p class="card-header text-center">Project Details</p>
+        <div class="card-body">
+          <div class="details-header">
+            {{ project.name }}
+            <small class="project-date">{{ project.start }} - {{ project.end }}</small>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>
