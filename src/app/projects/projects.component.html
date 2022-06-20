@@ -1,20 +1,27 @@
 <section class="card">
-  <div id="projects-list-header" class="card-header text-center">
+  <div id="projects-list-header" class="card-header text-center fs-4">
     {{ title }}
   </div>
   <ul id="projects" class="list-group list-group-flush">
-    <li class="project-list-item list-group-item"
+    <li class="project-list-item list-group-item p-0"
         *ngFor="let project of projects"
         [class.active]="project == selectedProject">
 
-      <div class="project-list-item-clickable" (click)="onSelect(project)">
-        <span>{{ project.name }}</span>
-        <button type="button" class="close" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+      <div class="project-list-item-clickable">
+        <div class="my-0 px-3" (click)="onSelect(project)">{{ project.name }}</div>
+        <button type="button" class="btn btn-outline-success btn-sm"
+                [class.text-white]="project == selectedProject"
+                [class.border-white]="project == selectedProject">
+          Complete
+        </button>
+        <button type="button" class="btn btn-outline-danger btn-sm"
+                [class.text-white]="project == selectedProject"
+                [class.border-white]="project == selectedProject">
+          Delete
         </button>
       </div>
 
-      <div class="project-detail card my-2 text-black"
+      <div class="project-detail card mx-3 my-3 text-black"
            [class.d-none]="project != selectedProject">
         <p class="card-header text-center">Project Details</p>
         <div class="card-body">

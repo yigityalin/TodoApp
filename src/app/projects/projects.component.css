@@ -9,7 +9,22 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  margin: 6px 0;
+}
+
+.project-list-item-clickable div {
   cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.project-list-item-clickable button {
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+}
+
+.project-list-item-clickable:nth-child(n) {
+  margin-right: 0.3rem;
 }
 
 .project-detail {
